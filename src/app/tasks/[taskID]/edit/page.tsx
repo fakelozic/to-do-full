@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import EditTaskForm from "@/components/EditTaskForm";
 import prisma from "@/db.config";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export default async function EditTaskPage({
   params,
@@ -16,5 +18,12 @@ export default async function EditTaskPage({
     notFound();
   }
 
-  return <EditTaskForm task={task} />;
+  return (
+    <div className="mt-4">
+      <Button className="text-xl mb-4" asChild>
+        <Link href={"/tasks"}>All Tasks</Link>
+      </Button>
+      <EditTaskForm task={task} />
+    </div>
+  );
 }

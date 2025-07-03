@@ -5,7 +5,7 @@ import Link from "next/link";
 export default async function Task() {
   const tasks = await prisma.todo.findMany();
   return (
-    <>
+    <div className="mt-4">
       <h1 className="text-2xl mb-5">All Tasks</h1>
       <div className="flex gap-x-4">
         <div className="flex-1">
@@ -22,6 +22,6 @@ export default async function Task() {
           ))}
         </ul>
       </div>
-    </>
+    </div>
   );
 }

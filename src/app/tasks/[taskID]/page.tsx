@@ -14,7 +14,7 @@ export default async function TaskPage({
     where: { id: Number(taskID) },
   });
   return (
-    <>
+    <div className="mt-4">
       <div className="flex justify-between">
         <h1 className="text-2xl mb-5">All Tasks</h1>
         <Button className="text-xl" variant={"outline"} asChild>
@@ -31,6 +31,6 @@ export default async function TaskPage({
         </Button>
         <DeleteTaskForm taskID={taskID_num} />
       </div>
-    </>
+    </div>
   );
 }
