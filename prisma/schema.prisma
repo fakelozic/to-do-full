@@ -14,11 +14,11 @@ datasource db {
 }
 
 model Todo {
-  id Int @id @default(autoincrement())
-  task String
-  description String? @db.Text
-  priority Priority
-  created_at DateTime @default(now())
+  id          Int      @id @default(autoincrement())
+  task        String
+  description String?  @db.Text
+  priority    Priority
+  created_at  DateTime @default(now())
 }
 
 enum Priority {

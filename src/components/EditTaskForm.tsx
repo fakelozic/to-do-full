@@ -1,0 +1,53 @@
+import { updateTask } from "@/app/actions";
+import { Button } from "./ui/button";
+import type { Todo } from "@prisma/client";
+
+export default function EditTaskForm({ task }: { task: Todo }) {
+  const updateTaskWithId = updateTask.bind(null, task.id);
+  return (
+    <form action={updateTaskWithId} className="mb-8 p-4 border rounded-lg">
+      <h2 className="text-xl font-semibold mb-4">Add a New Task</h2>
+      <div className="mb-4">
+        <label htmlFor="task" className="block mb-1 font-medium">
+          Task
+        </label>
+        <input
+          type="text"
+          id="task"
+          name="task"
+          required
+          className="w-full p-2 border rounded-md"
+          defaultValue={task.task}
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="description" className="block mb-1 font-medium">
+          Description (Optional)
+        </label>
+        <textarea
+          id="description"
+          name="description"
+          className="w-full p-2 border rounded-md"
+          defaultValue={task.description ? task.description : ""}
+        ></textarea>
+      </div>
+      <div className="mb-4">
+        <label htmlFor="priority" className="block mb-1 font-medium">
+          Priority
+        </label>
+        <select
+          id="priority"
+          name="priority"
+          required
+          defaultValue={task.priority}
+          className="w-full p-2 border rounded-md bg-white"
+        >
+          <option value="High">High</option>
+          <option value="Medium">Medium</option>
+          <option value="Low">Low</option>
+        </select>
+      </div>
+      <Button type="submit">Edit Task</Button>
+    </form>
+  );
+}
